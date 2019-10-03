@@ -6,17 +6,17 @@
     {
         internal abstract void Execute(Robot robot, World world);
 
-        internal static Command Parse(CommandToken command)
+        internal static Command Parse(char command)
         {
             switch (command)
             {
-                case LeftCommandToken _:
+                case 'L':
                     return new LeftCommand();
 
-                case RightCommandToken _:
+                case 'R':
                     return new RightCommand();
 
-                case ForwardCommandToken _:
+                case 'F':
                     return new ForwardCommand();
 
                 default:

@@ -7,16 +7,16 @@
         private readonly int width;
         private readonly int height;
 
-        internal World(int width, int height, IList<Robot> robots)
+        internal World(int width, int height, IEnumerable<Robot> robots)
         {
             this.width = width;
             this.height = height;
             this.Robots = robots;
         }
 
-        internal List<(int, int)> Scents { get; } = new List<(int, int)>();
+        internal IList<(int, int)> Scents { get; } = new List<(int, int)>();
 
-        internal IList<Robot> Robots { get; private set; }
+        internal IEnumerable<Robot> Robots { get; private set; }
 
         internal bool IsIn(int x, int y)
         {
