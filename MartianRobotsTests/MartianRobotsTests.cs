@@ -58,7 +58,7 @@ F",
         [ExpectedException(typeof(Exception))]
         public void Unkown_command_throws()
         {
-            var input = @"1 1
+            const string input = @"1 1
 0 0 W
 X";
 
@@ -69,7 +69,7 @@ X";
         [ExpectedException(typeof(Exception))]
         public void Unkown_orientation_throws()
         {
-            var input = @"1 1
+            const string input = @"1 1
 0 0 X
 F";
 

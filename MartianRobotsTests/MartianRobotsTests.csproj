@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CLI\CLI.csproj" />
     <ProjectReference Include="..\MartianRobots\MartianRobots.csproj" />
   </ItemGroup>
 
