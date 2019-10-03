@@ -1,15 +1,17 @@
 namespace UnitTestProject1
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Collections.Generic;
 
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void TestMethod1()
+        public static IEnumerable<object[]> Data
         {
-            var input = @"
-5 3
+            get
+            {
+                yield return new[] {
+                    @"5 3
 1 1 E
 RFRFRFRF
 
@@ -17,19 +19,21 @@ RFRFRFRF
 FRRFLLFFRRFLL
 
 0 3 W
-LLFFFLFLFL
-";
+LLFFFLFLFL",
+                    @"1 1 E
+3 3 N LOST
+2 3 S"
+                };
+            }
+        }
 
+        [TestMethod]
+        [DynamicData(nameof(Data))]
+        public void TestMethod1(string input, string expected)
+        {
             var world = Parser.Parse(input);
             world.Execute();
-
             var actual = Serialiser.Serialise(world);
-
-            var expected = @"
-1 1 E
-3 3 N LOST
-2 3 S
-".Trim();
 
             Assert.AreEqual(expected, actual);
         }
