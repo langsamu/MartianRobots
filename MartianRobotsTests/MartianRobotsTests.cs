@@ -2,6 +2,7 @@ namespace MartianRobotsTests
 {
     using MartianRobots;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
     using System.Collections.Generic;
 
     [TestClass]
@@ -25,6 +26,20 @@ LLFFFLFLFL",
 3 3 N LOST
 2 3 S"
                 };
+
+                yield return new[] {
+                    @"1 1
+0 0 S
+F",
+                    @"0 0 S LOST"
+                };
+
+                yield return new[] {
+                    @"1 1
+1 0 W
+F",
+                    @"0 0 W"
+                };
             }
         }
 
@@ -37,6 +52,28 @@ LLFFFLFLFL",
             var actual = Serialiser.Serialise(world);
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void Unkown_command_throws()
+        {
+            var input = @"1 1
+0 0 W
+X";
+
+            Sample_data_is_correct(input, string.Empty);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void Unkown_orientation_throws()
+        {
+            var input = @"1 1
+0 0 X
+F";
+
+            Sample_data_is_correct(input, string.Empty);
         }
     }
 }

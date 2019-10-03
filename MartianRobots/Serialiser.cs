@@ -58,12 +58,10 @@ namespace MartianRobots
                 case -90:
                     return 'S';
 
+                default:
                 case 180:
                 case -180:
                     return 'W';
-
-                default:
-                    throw new Exception();
             }
         }
     }
