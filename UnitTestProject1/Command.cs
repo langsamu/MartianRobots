@@ -1,23 +1,26 @@
 ﻿namespace UnitTestProject1
 {
+    using System;
+
     internal abstract class Command
     {
         internal abstract void Execute(Robot robot, World world);
 
-        internal static Command Parse(char command)
+        internal static Command Parse(CommandToken command)
         {
-            // TODO: enum
             switch (command)
             {
-                case 'L':
+                case LeftCommandToken _:
                     return new LeftCommand();
 
-                case 'R':
+                case RightCommandToken _:
                     return new RightCommand();
 
-                default:
-                case 'F':
+                case ForwardCommandToken _:
                     return new ForwardCommand();
+
+                default:
+                    throw new Exception();
             }
         }
     }

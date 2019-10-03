@@ -1,6 +1,7 @@
 namespace UnitTestProject1
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
     using System.Linq;
 
     [TestClass]
@@ -30,7 +31,7 @@ LLFFFLFLFL
             var robots = oddLines.Zip(evenLines, (locationLine, commandsLine) =>
             {
                 var location = locationLine.Split(' ');
-                return new Robot(int.Parse(location[0]), int.Parse(location[1]), ParseOrientation(location[2]), commandsLine);
+                return new Robot(int.Parse(location[0]), int.Parse(location[1]), ParseOrientation(location[2]), commandsLine.Select(CommandToken.Parse).Select(Command.Parse));
             }).ToArray();
 
             foreach (var robot in robots)
@@ -62,9 +63,11 @@ LLFFFLFLFL
                 case "S":
                     return 270;
 
-                default:
                 case "W":
                     return 180;
+
+                default:
+                    throw new Exception();
             }
         }
 
@@ -87,9 +90,11 @@ LLFFFLFLFL
                 case 270:
                     return 'S';
 
-                default:
                 case 180:
                     return 'W';
+
+                default:
+                    throw new Exception();
             }
         }
     }

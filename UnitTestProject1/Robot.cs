@@ -1,8 +1,10 @@
-﻿namespace UnitTestProject1
+﻿using System.Collections.Generic;
+
+namespace UnitTestProject1
 {
     internal class Robot
     {
-        private readonly string movements;
+        private readonly IEnumerable<Command> commands;
 
         internal int X { get; set; }
 
@@ -12,19 +14,19 @@
 
         internal double Orientation { get; set; }
 
-        internal Robot(int x, int y, double orientation, string movements)
+        internal Robot(int x, int y, double orientation, IEnumerable<Command> commands)
         {
             this.X = x;
             this.Y = y;
             this.Orientation = orientation;
-            this.movements = movements;
+            this.commands = commands;
         }
 
         internal void Execute(World world)
         {
-            foreach (var movement in movements)
+            foreach (var command in commands)
             {
-                Command.Parse(movement).Execute(this, world);
+                command.Execute(this, world);
 
                 if (Lost)
                 {
