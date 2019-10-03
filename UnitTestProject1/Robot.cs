@@ -10,9 +10,9 @@
 
         internal bool Lost { get; set; }
 
-        internal char Orientation { get; set; }
+        internal double Orientation { get; set; }
 
-        internal Robot(int x, int y, char orientation, string movements)
+        internal Robot(int x, int y, double orientation, string movements)
         {
             this.X = x;
             this.Y = y;

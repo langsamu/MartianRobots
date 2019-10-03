@@ -1,33 +1,13 @@
 ﻿namespace UnitTestProject1
 {
+    using System;
+
     internal class ForwardCommand : Command
     {
         internal override void Execute(Robot robot, World world)
         {
-            var movementVector = (X: 0, Y: 0);
-
-            switch (robot.Orientation)
-            {
-                case 'N':
-                    movementVector.Y++;
-                    break;
-
-                case 'E':
-                    movementVector.X++;
-                    break;
-
-                case 'S':
-                    movementVector.Y--;
-                    break;
-
-                default:
-                case 'W':
-                    movementVector.X--;
-                    break;
-            }
-
-            var x = robot.X + movementVector.X;
-            var y = robot.Y + movementVector.Y;
+            var x = robot.X + (int)Math.Cos((robot.Orientation * (Math.PI)) / 180);
+            var y = robot.Y + (int)Math.Sin((robot.Orientation * (Math.PI)) / 180);
 
             if (!world.IsIn(x, y))
             {
