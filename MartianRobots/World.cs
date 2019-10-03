@@ -1,8 +1,8 @@
-﻿namespace UnitTestProject1
+﻿namespace MartianRobots
 {
     using System.Collections.Generic;
 
-    internal class World
+    public class World
     {
         private readonly int width;
         private readonly int height;
@@ -18,17 +18,17 @@
 
         internal IEnumerable<Robot> Robots { get; private set; }
 
-        internal bool IsIn(int x, int y)
-        {
-            return x >= 0 && y >= 0 && x <= width && y <= height;
-        }
-
-        internal void Execute()
+        public void Execute()
         {
             foreach (var robot in Robots)
             {
                 robot.Execute(this);
             }
+        }
+
+        internal bool IsIn(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x <= width && y <= height;
         }
     }
 }

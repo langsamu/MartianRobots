@@ -1,4 +1,4 @@
-﻿namespace UnitTestProject1
+﻿namespace MartianRobots
 {
     internal class LeftCommand : Command
     {

@@ -1,10 +1,11 @@
-namespace UnitTestProject1
+namespace MartianRobotsTests
 {
+    using MartianRobots;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
 
     [TestClass]
-    public class UnitTest1
+    public class MartianRobotsTests
     {
         public static IEnumerable<object[]> Data
         {
@@ -29,7 +30,7 @@ LLFFFLFLFL",
 
         [TestMethod]
         [DynamicData(nameof(Data))]
-        public void TestMethod1(string input, string expected)
+        public void Sample_data_is_correct(string input, string expected)
         {
             var world = Parser.Parse(input);
             world.Execute();

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRobots", "MartianRobots\MartianRobots.csproj", "{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartianRobotsTests", "MartianRobotsTests\MartianRobotsTests.csproj", "{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

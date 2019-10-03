@@ -1,11 +1,11 @@
-﻿namespace UnitTestProject1
+﻿namespace MartianRobots
 {
     using System;
     using System.Linq;
 
-    internal class Serialiser
+    public class Serialiser
     {
-        internal static object Serialise(World world)
+        public static object Serialise(World world)
         {
             return string.Join(Environment.NewLine, world.Robots.Select(FormatRobot));
         }

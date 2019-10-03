@@ -1,4 +1,4 @@
-﻿namespace UnitTestProject1
+﻿namespace MartianRobots
 {
     using System;
 
@@ -6,8 +6,10 @@
     {
         internal override void Execute(Robot robot, World world)
         {
-            var x = robot.X + (int)Math.Cos((robot.Orientation * (Math.PI)) / 180);
-            var y = robot.Y + (int)Math.Sin((robot.Orientation * (Math.PI)) / 180);
+            var orientationRadians = robot.Orientation * Math.PI / 180;
+
+            var x = robot.X + (int)Math.Cos(orientationRadians);
+            var y = robot.Y + (int)Math.Sin(orientationRadians);
 
             if (!world.IsIn(x, y))
             {
@@ -23,7 +25,6 @@
 
             robot.X = x;
             robot.Y = y;
-
         }
     }
 }

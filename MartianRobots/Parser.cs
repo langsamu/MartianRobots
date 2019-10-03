@@ -1,13 +1,13 @@
-﻿namespace UnitTestProject1
+﻿namespace MartianRobots
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
-    internal class Parser
+    public class Parser
     {
-        internal static World Parse(string input)
+        public static World Parse(string input)
         {
             var e = input.AsEnumerable().GetEnumerator();
 
