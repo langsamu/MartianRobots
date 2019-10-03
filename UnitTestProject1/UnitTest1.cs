@@ -22,18 +22,7 @@ FRRFLLFFRRFLL
 LLFFFLFLFL
 ";
 
-            var lines = input.Split("\r\n").Except(new[] { string.Empty });
-            var coordinates = lines.First().Split(' ');
-            var robotLines = lines.Skip(1);
-            var oddLines = robotLines.Where((_, i) => i % 2 == 0);
-            var evenLines = robotLines.Where((_, i) => i % 2 != 0);
-            var robots = oddLines.Zip(evenLines, (locationLine, commandsLine) =>
-            {
-                var location = locationLine.Split(' ');
-                return new Robot(int.Parse(location[0]), int.Parse(location[1]), ParseOrientation(location[2]), commandsLine.Select(CommandToken.Parse).Select(Command.Parse));
-            }).ToList();
-            var world = new World(int.Parse(coordinates[0]), int.Parse(coordinates[1]), robots);
-
+            var world = Parser.Parse(input);
             world.Execute();
 
             var actual = string.Join("\r\n", world.Robots.Select(robot => string.Format("{0} {1} {2}{3}", robot.X, robot.Y, FormatOrientation(robot.Orientation), robot.Lost ? " LOST" : string.Empty)));
@@ -45,27 +34,6 @@ LLFFFLFLFL
 ".Trim();
 
             Assert.AreEqual(expected, actual);
-        }
-
-        private static double ParseOrientation(string location)
-        {
-            switch (location)
-            {
-                case "N":
-                    return 90;
-
-                case "E":
-                    return 0;
-
-                case "S":
-                    return 270;
-
-                case "W":
-                    return 180;
-
-                default:
-                    throw new Exception();
-            }
         }
 
         private static char FormatOrientation(double orientation)
