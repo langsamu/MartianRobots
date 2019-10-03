@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace UnitTestProject1
+﻿namespace UnitTestProject1
 {
+    using System.Collections.Generic;
+
     internal class Robot
     {
         private readonly IEnumerable<Command> commands;
