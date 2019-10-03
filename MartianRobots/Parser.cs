@@ -36,13 +36,14 @@ namespace MartianRobots
         /// <returns>The parsed world object.</returns>
         public static World Parse(string input)
         {
+            input = input.Replace("\r\n", "\n");
+
             var e = input.AsEnumerable().GetEnumerator();
 
             e.MoveNext();
             var width = ParseInteger(e);
             e.MoveNext();
             var height = ParseInteger(e);
-            e.MoveNext();
             e.MoveNext();
             var robots = ParseRobots(e).ToList();
 
@@ -72,12 +73,11 @@ namespace MartianRobots
                 e.MoveNext();
                 var o = ParseOrientation(e);
                 e.MoveNext();
-                e.MoveNext();
                 var commands = ParseCommands(e).ToList();
 
                 yield return new Robot(x, y, o, commands);
             }
-            while (e.MoveNext() && e.MoveNext() && e.MoveNext() && e.MoveNext());
+            while (e.MoveNext() && e.MoveNext());
         }
 
         private static double ParseOrientation(IEnumerator<char> e)

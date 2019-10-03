@@ -22,8 +22,14 @@ namespace CLI
     using System;
     using MartianRobots;
 
+    /// <summary>
+    /// Contains functionality to execute the world from the command line.
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Comman line entry point.
+        /// </summary>
         public static void Main()
         {
             var world = Parser.Parse(Console.In.ReadToEnd());
