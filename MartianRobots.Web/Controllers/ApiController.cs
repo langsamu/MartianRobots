@@ -19,43 +19,34 @@
 
 namespace MartianRobots.Web
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
+    using System;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.DependencyInjection;
 
-    /// <summary>
-    /// Represents a startup for ASPNET Core web hosts.
-    /// </summary>
-    internal class Startup
+    [Route("api")]
+    public class ApiController : Controller
     {
-        /// <summary>
-        /// Configures ASPNET Core services.
-        /// </summary>
-        /// <param name="services">Dependency injected service collection.</param>
-        public void ConfigureServices(IServiceCollection services)
+        [HttpPost]
+        [HttpGet]
+        public IActionResult Index(string world)
         {
-            services.AddMvc(ConfigureMvc);
+            var entity = Parser.Parse(world);
+            return this.PostEntity(entity);
         }
 
-        private static void ConfigureMvc(MvcOptions mvc)
+        [HttpPost("entity")]
+        public IActionResult PostEntity([FromBody]World world)
         {
-            mvc.InputFormatters.Insert(0, new WorldInputFormatter());
-        }
-
-        /// <summary>
-        /// Confgures ASPNET Core middleware.
-        /// </summary>
-        /// <param name="app">Dependency injected application builder.</param>
-        /// <param name="env">Dependency injected hosting environment.</param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
+            try
             {
-                app.UseDeveloperExceptionPage();
-            }
+                world.Execute();
+                var output = Serialiser.Serialise(world);
 
-            app.UseMvc();
+                return this.Ok(output);
+            }
+            catch (Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
         }
     }
 }
