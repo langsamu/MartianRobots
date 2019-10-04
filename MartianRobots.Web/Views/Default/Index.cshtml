@@ -1,0 +1,23 @@
+﻿@model Parameters
+
+<h1>Martian Robots</h1>
+
+<form method="post">
+    <label asp-for="Input"></label>
+    <textarea asp-for="Input" required></textarea>
+    <button>submit</button>
+</form>
+
+@if (Model is object)
+{
+    <div>
+        @if (Model.Output is object)
+        {
+            <pre>@Model.Output</pre>
+        }
+        @if (Model.Error is object)
+        {
+            <span>@Model.Error</span>
+        }
+    </div>
+}

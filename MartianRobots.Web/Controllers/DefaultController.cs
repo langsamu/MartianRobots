@@ -19,38 +19,34 @@
 
 namespace MartianRobots.Web
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Extensions.DependencyInjection;
+    using System;
+    using Microsoft.AspNetCore.Mvc;
 
-    /// <summary>
-    /// Represents a startup for ASPNET Core web hosts.
-    /// </summary>
-    internal class Startup
+    [Route("")]
+    public class DefaultController : Controller
     {
-        /// <summary>
-        /// Configures ASPNET Core services.
-        /// </summary>
-        /// <param name="services">Dependency injected service collection.</param>
-        public void ConfigureServices(IServiceCollection services)
+        [HttpGet]
+        public IActionResult Index()
         {
-            services.AddMvc();
+            return this.View();
         }
 
-        /// <summary>
-        /// Confgures ASPNET Core middleware.
-        /// </summary>
-        /// <param name="app">Dependency injected application builder.</param>
-        /// <param name="env">Dependency injected hosting environment.</param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        [HttpPost]
+        public IActionResult Index(Parameters parameters)
         {
-            if (env.IsDevelopment())
+            try
             {
-                app.UseDeveloperExceptionPage();
+                var world = Parser.Parse(parameters.Input);
+                world.Execute();
+
+                parameters.Output = Serialiser.Serialise(world);
+            }
+            catch (Exception e)
+            {
+                parameters.Error = e.Message;
             }
 
-            app.UseMvc();
+            return this.View(parameters);
         }
     }
 }

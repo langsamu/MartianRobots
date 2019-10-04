@@ -32,7 +32,7 @@ namespace MartianRobots
         /// </summary>
         /// <param name="world">The world object to serialise.</param>
         /// <returns>A Textual representation of the world.</returns>
-        public static object Serialise(World world)
+        public static string Serialise(World world)
         {
             return string.Join(Environment.NewLine, world.Robots.Select(FormatRobot));
         }
