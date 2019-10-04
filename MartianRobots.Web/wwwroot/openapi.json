@@ -1,0 +1,110 @@
+﻿{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Martian Robots API",
+    "description": "This API parses, processes and serialises worlds where robots execute movement commands.",
+    "contact": {
+      "name": "Written by Samu Láng",
+      "url": "https://www.linkedin.com/in/langsamu"
+    },
+    "license": {
+      "name": "Released under the MIT License",
+      "url": "https://github.com/langsamu/MartianRobots/blob/master/LICENSE"
+    },
+    "version": "Live"
+  },
+  "servers": [
+    {
+      "url": "https://martian-robots.azurewebsites.net/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Operations",
+      "description": "Endpoints for executing worlds over HTTP"
+    }
+  ],
+  "externalDocs": {
+    "description": "More information in the GitHub README",
+    "url": "https://github.com/langsamu/MartianRobots/blob/master/README.md"
+  },
+  "components": {
+    "responses": {
+      "execute": {
+        "description": "The state of the robots after executing movement commands",
+        "content": {
+          "text/plain": {
+            "schema": { "$ref": "#/components/schemas/execute" }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "world": {
+        "name": "world",
+        "description": "The initial state of the world",
+        "in": "query",
+        "schema": { "$ref": "#/components/schemas/world" }
+      }
+    },
+    "requestBodies": {
+      "world": {
+        "description": "The initial state of the world",
+        "content": {
+          "text/plain": {
+            "schema": { "$ref": "#/components/schemas/world" }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "world": {
+        "description": "The initial state of the world",
+        "type": "string",
+        "example": "5 3\r\n1 1 E\r\nRFRFRFRF\r\n\r\n3 2 N\r\nFRRFLLFFRRFLL\r\n\r\n0 3 W\r\nLLFFFLFLFL"
+      },
+      "execute": {
+        "description": "A textual representation of the state of robots",
+        "type": "string",
+        "example": "1 1 E\r\n3 3 N LOST\r\n2 3 S"
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "getParams",
+        "tags": [ "Operations" ],
+        "summary": "Execute a world via querystring parameters",
+        "parameters": [
+          { "$ref": "#/components/parameters/world" }
+        ],
+        "responses": {
+          "200": { "$ref": "#/components/responses/execute" }
+        }
+      },
+      "post": {
+        "operationId": "postParams",
+        "tags": [ "Operations" ],
+        "summary": "Execute a world via form parameters",
+        "parameters": [
+          { "$ref": "#/components/parameters/world" }
+        ],
+        "responses": {
+          "200": { "$ref": "#/components/responses/execute" }
+        }
+      }
+    },
+    "/entity": {
+      "post": {
+        "operationId": "postEntity",
+        "tags": [ "Operations" ],
+        "summary": "Execute a world via request body",
+        "requestBody": { "$ref": "#/components/requestBodies/world" },
+        "responses": {
+          "200": { "$ref": "#/components/responses/execute" }
+        }
+      }
+    }
+  }
+}

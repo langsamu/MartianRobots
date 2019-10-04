@@ -22,7 +22,9 @@ namespace MartianRobots.Web
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Rewrite;
     using Microsoft.Extensions.DependencyInjection;
+    using Swashbuckle.AspNetCore.SwaggerUI;
 
     /// <summary>
     /// Represents a startup for ASPNET Core web hosts.
@@ -55,7 +57,20 @@ namespace MartianRobots.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+            app.UseRewriter(new RewriteOptions().AddRewrite("^openapi$", "swagger/index.html", false).AddRewrite("^(swagger|favicon)(.+)$", "swagger/$1$2", true));
             app.UseMvc();
+            app.UseSwaggerUI(ConfigureSwaggerUI);
+        }
+
+        private static void ConfigureSwaggerUI(SwaggerUIOptions swaggerUI)
+        {
+            swaggerUI.DocumentTitle = "Martian Robots OpenAPI";
+            swaggerUI.SwaggerEndpoint("./openapi.json", "live");
+            swaggerUI.DefaultModelsExpandDepth(-1);
+            swaggerUI.DisplayRequestDuration();
+            swaggerUI.InjectStylesheet("./openapi.css");
+            swaggerUI.EnableDeepLinking();
         }
     }
 }
