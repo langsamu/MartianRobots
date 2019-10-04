@@ -1,4 +1,4 @@
-namespace MartianRobotsTests
+namespace MartianRobots.Test
 {
     using MartianRobots;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

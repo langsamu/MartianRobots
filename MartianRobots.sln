@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRobots", "MartianRobots\MartianRobots.csproj", "{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartianRobotsTests", "MartianRobotsTests\MartianRobotsTests.csproj", "{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}"
+Project("{E3D13A95-4F91-4B36-8CF4-0A2B4BB08DC6}") = "MartianRobots.Cli", "MartianRobots.Cli\MartianRobots.Cli.csproj", "{51BBF185-8513-426C-9447-EEB7990774C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartianRobots.Test", "MartianRobots.Test\MartianRobots.Test.csproj", "{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRobots.Web", "MartianRobots.Web\MartianRobots.Web.csproj", "{08EEAFAD-4682-46EF-98C0-102FF7138425}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9BA0A036-0E3C-4373-95F0-AADBBE5E9F62}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,8 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		stylecop.json = stylecop.json
 	EndProjectSection
-EndProject
-Project("{E3D13A95-4F91-4B36-8CF4-0A2B4BB08DC6}") = "CLI", "CLI\CLI.csproj", "{51BBF185-8513-426C-9447-EEB7990774C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,14 +29,18 @@ Global
 		{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF32B2BF-C163-4F41-BCF2-DD09CFC8DD5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{51BBF185-8513-426C-9447-EEB7990774C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51BBF185-8513-426C-9447-EEB7990774C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51BBF185-8513-426C-9447-EEB7990774C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51BBF185-8513-426C-9447-EEB7990774C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92EBAF9A-00AD-4DE6-A397-1BEE73C6A0DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08EEAFAD-4682-46EF-98C0-102FF7138425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08EEAFAD-4682-46EF-98C0-102FF7138425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08EEAFAD-4682-46EF-98C0-102FF7138425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08EEAFAD-4682-46EF-98C0-102FF7138425}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CLI\CLI.csproj" />
+    <ProjectReference Include="..\MartianRobots.Cli\MartianRobots.Cli.csproj" />
+    <ProjectReference Include="..\MartianRobots.Web\MartianRobots.Web.csproj" />
     <ProjectReference Include="..\MartianRobots\MartianRobots.csproj" />
   </ItemGroup>
 

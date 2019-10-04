@@ -1,15 +1,15 @@
-namespace MartianRobotsTests
+namespace MartianRobots.Test
 {
-    using CLI;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.IO;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using MartianRobots.Cli;
 
     [TestClass]
-    public class CLITests
+    public class CliTests
     {
         [TestMethod]
-        public void CLI_works()
+        public void Cli_works()
         {
             const string input = @"5 3
 1 1 E
