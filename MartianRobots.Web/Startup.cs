@@ -29,7 +29,7 @@ namespace MartianRobots.Web
     /// <summary>
     /// Represents a startup for ASPNET Core web hosts.
     /// </summary>
-    internal class Startup
+    public class Startup
     {
         /// <summary>
         /// Configures ASPNET Core services.

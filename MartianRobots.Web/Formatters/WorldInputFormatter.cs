@@ -24,7 +24,6 @@
                 var world = Parser.Parse(input);
                 return InputFormatterResult.SuccessAsync(world);
             }
-
         }
 
         protected override bool CanReadType(Type type)

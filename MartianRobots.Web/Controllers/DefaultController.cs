@@ -36,7 +36,7 @@ namespace MartianRobots.Web
         {
             try
             {
-                var world = Parser.Parse(parameters.Input);
+                var world = Parser.Parse(parameters.World);
                 world.Execute();
 
                 parameters.Output = Serialiser.Serialise(world);

@@ -27,9 +27,9 @@ namespace MartianRobots.Web
     {
         [HttpPost]
         [HttpGet]
-        public IActionResult Index(string world)
+        public IActionResult Index(Parameters parameters)
         {
-            var entity = Parser.Parse(world);
+            var entity = Parser.Parse(parameters.World);
             return this.PostEntity(entity);
         }
 

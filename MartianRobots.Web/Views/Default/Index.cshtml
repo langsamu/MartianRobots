@@ -3,8 +3,8 @@
 <h1>Martian Robots</h1>
 
 <form method="post">
-    <label asp-for="Input"></label>
-    <textarea asp-for="Input" required rows="10"></textarea>
+    <label asp-for="World"></label>
+    <textarea asp-for="World" required rows="10"></textarea>
     <button>submit</button>
 </form>
 
@@ -17,7 +17,7 @@
         }
         @if (Model.Error is object)
         {
-            <span>@Model.Error</span>
+            <span class="error">@Model.Error</span>
         }
     </div>
 }

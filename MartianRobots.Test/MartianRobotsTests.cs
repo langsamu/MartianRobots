@@ -8,43 +8,8 @@ namespace MartianRobots.Test
     [TestClass]
     public class MartianRobotsTests
     {
-        public static IEnumerable<object[]> Data
-        {
-            get
-            {
-                yield return new[] {
-                    @"5 3
-1 1 E
-RFRFRFRF
-
-3 2 N
-FRRFLLFFRRFLL
-
-0 3 W
-LLFFFLFLFL",
-                    @"1 1 E
-3 3 N LOST
-2 3 S"
-                };
-
-                yield return new[] {
-                    @"1 1
-0 0 S
-F",
-                    @"0 0 S LOST"
-                };
-
-                yield return new[] {
-                    @"1 1
-1 0 W
-F",
-                    @"0 0 W"
-                };
-            }
-        }
-
         [TestMethod]
-        [DynamicData(nameof(Data))]
+        [DynamicData(nameof(Test.Data), typeof(Test))]
         public void Sample_data_is_correct(string input, string expected)
         {
             var world = Parser.Parse(input);

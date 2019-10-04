@@ -23,10 +23,10 @@ namespace MartianRobots.Web
 
     public class Parameters
     {
-        [Display(Name = "Input")]
+        [Display(Name = "World")]
         [DataType(DataType.MultilineText)]
         [Required]
-        public string Input { get; set; }
+        public string World { get; set; }
 
         public string Output { get; set; }
 

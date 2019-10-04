@@ -25,8 +25,15 @@ namespace MartianRobots.Web
     /// <summary>
     /// Represents the Martian Robots web application.
     /// </summary>
-    internal static class Program
+    public class Program
     {
-        private static void Main(string[] args) => WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().Build().Run();
+        public static void Main(string[] args)
+        {
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
     }
 }
