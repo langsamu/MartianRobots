@@ -27,7 +27,7 @@ namespace MartianRobots
     /// <summary>
     /// Contains functionality for converting a texual representation of a world with robots and commands into objects.
     /// </summary>
-    public class Parser
+    public static   class Parser
     {
         /// <summary>
         /// Converts a textual representation of the world into objects.
