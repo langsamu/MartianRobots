@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartianRobots.Test", "Marti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartianRobots.Web", "MartianRobots.Web\MartianRobots.Web.csproj", "{08EEAFAD-4682-46EF-98C0-102FF7138425}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRobots.Availability", "MartianRobots.Availability\MartianRobots.Availability.csproj", "{3B2B751E-1AE7-490B-A94C-3F6E84EA0937}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9BA0A036-0E3C-4373-95F0-AADBBE5E9F62}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -42,6 +44,10 @@ Global
 		{08EEAFAD-4682-46EF-98C0-102FF7138425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08EEAFAD-4682-46EF-98C0-102FF7138425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08EEAFAD-4682-46EF-98C0-102FF7138425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B2B751E-1AE7-490B-A94C-3F6E84EA0937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B2B751E-1AE7-490B-A94C-3F6E84EA0937}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B2B751E-1AE7-490B-A94C-3F6E84EA0937}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B2B751E-1AE7-490B-A94C-3F6E84EA0937}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

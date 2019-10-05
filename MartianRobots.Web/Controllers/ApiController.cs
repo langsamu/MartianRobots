@@ -37,8 +37,15 @@ namespace MartianRobots.Web
         [HttpGet]
         public IActionResult Index(Parameters parameters)
         {
-            var entity = Parser.Parse(parameters.World);
-            return this.PostEntity(entity);
+            try
+            {
+                var entity = Parser.Parse(parameters.World);
+                return this.PostEntity(entity);
+            }
+            catch (Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
         }
 
         /// <summary>
@@ -49,17 +56,15 @@ namespace MartianRobots.Web
         [HttpPost("entity")]
         public IActionResult PostEntity([FromBody]World world)
         {
-            try
+            if (world is null)
             {
-                world.Execute();
-                var output = Serialiser.Serialise(world);
+                return this.BadRequest();
+            }
 
-                return this.Ok(output);
-            }
-            catch (Exception e)
-            {
-                return this.BadRequest(e.Message);
-            }
+            world.Execute();
+            var output = Serialiser.Serialise(world);
+
+            return this.Ok(output);
         }
     }
 }
