@@ -27,11 +27,20 @@ namespace MartianRobots.Web
     /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Application entry point.
+        /// </summary>
+        /// <param name="args">Command line arguments.</param>
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
         }
 
+        /// <summary>
+        /// Creates a web host builder.
+        /// </summary>
+        /// <param name="args">Command line arguments.</param>
+        /// <returns>A configured webhost builder.</returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();

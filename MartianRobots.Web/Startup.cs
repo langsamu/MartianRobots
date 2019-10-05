@@ -40,11 +40,6 @@ namespace MartianRobots.Web
             services.AddMvc(ConfigureMvc);
         }
 
-        private static void ConfigureMvc(MvcOptions mvc)
-        {
-            mvc.InputFormatters.Insert(0, new WorldInputFormatter());
-        }
-
         /// <summary>
         /// Confgures ASPNET Core middleware.
         /// </summary>
@@ -61,6 +56,11 @@ namespace MartianRobots.Web
             app.UseRewriter(new RewriteOptions().AddRewrite("^openapi$", "swagger/index.html", false).AddRewrite("^(swagger|favicon)(.+)$", "swagger/$1$2", true));
             app.UseMvc();
             app.UseSwaggerUI(ConfigureSwaggerUI);
+        }
+
+        private static void ConfigureMvc(MvcOptions mvc)
+        {
+            mvc.InputFormatters.Insert(0, new WorldInputFormatter());
         }
 
         private static void ConfigureSwaggerUI(SwaggerUIOptions swaggerUI)

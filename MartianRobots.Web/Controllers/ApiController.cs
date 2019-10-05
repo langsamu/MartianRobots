@@ -22,9 +22,17 @@ namespace MartianRobots.Web
     using System;
     using Microsoft.AspNetCore.Mvc;
 
+    /// <summary>
+    /// Represents a controller that can execute robots' movement commands and expose an API.
+    /// </summary>
     [Route("api")]
     public class ApiController : Controller
     {
+        /// <summary>
+        /// Represents get and post with parameter actions.
+        /// </summary>
+        /// <param name="parameters">A data transfer object.</param>
+        /// <returns>A textual representation of the state of the world after executing robots' movement commands.</returns>
         [HttpPost]
         [HttpGet]
         public IActionResult Index(Parameters parameters)
@@ -33,6 +41,11 @@ namespace MartianRobots.Web
             return this.PostEntity(entity);
         }
 
+        /// <summary>
+        /// Represents the post with body action.
+        /// </summary>
+        /// <param name="world">A world object deserialised from the request body.</param>
+        /// <returns>A textual representation of the state of the world after executing robots' movement commands.</returns>
         [HttpPost("entity")]
         public IActionResult PostEntity([FromBody]World world)
         {

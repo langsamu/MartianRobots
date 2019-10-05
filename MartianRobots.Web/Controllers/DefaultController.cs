@@ -22,15 +22,27 @@ namespace MartianRobots.Web
     using System;
     using Microsoft.AspNetCore.Mvc;
 
+    /// <summary>
+    /// Represents a controller that can execute robots' movement commands and render a UI.
+    /// </summary>
     [Route("")]
     public class DefaultController : Controller
     {
+        /// <summary>
+        /// Represents the get action.
+        /// </summary>
+        /// <returns>The default view.</returns>
         [HttpGet]
         public IActionResult Index()
         {
             return this.View();
         }
 
+        /// <summary>
+        /// Represents the post action.
+        /// </summary>
+        /// <param name="parameters">Post parameters in a DTO.</param>
+        /// <returns>A view populated with the result of executing movement commands.</returns>
         [HttpPost]
         public IActionResult Index(Parameters parameters)
         {

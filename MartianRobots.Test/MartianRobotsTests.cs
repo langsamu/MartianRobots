@@ -3,7 +3,6 @@ namespace MartianRobots.Test
     using MartianRobots;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
-    using System.Collections.Generic;
 
     [TestClass]
     public class MartianRobotsTests

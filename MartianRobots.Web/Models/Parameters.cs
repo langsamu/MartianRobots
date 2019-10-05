@@ -21,15 +21,27 @@ namespace MartianRobots.Web
 {
     using System.ComponentModel.DataAnnotations;
 
+    /// <summary>
+    /// Represents a data transfer object for Martian Robots operations.
+    /// </summary>
     public class Parameters
     {
+        /// <summary>
+        /// Gets or sets a textual representation of the world.
+        /// </summary>
         [Display(Name = "World")]
         [DataType(DataType.MultilineText)]
         [Required]
         public string World { get; set; }
 
+        /// <summary>
+        /// Gets or sets a textual representation of the state of the world after executing commands.
+        /// </summary>
         public string Output { get; set; }
 
+        /// <summary>
+        /// Gets or sets the error message in case of failure to execute the world.
+        /// </summary>
         public string Error { get; set; }
     }
 }
