@@ -70,6 +70,7 @@ namespace MartianRobots.Web
             swaggerUI.DefaultModelsExpandDepth(-1);
             swaggerUI.DisplayRequestDuration();
             swaggerUI.InjectStylesheet("./openapi.css");
+            swaggerUI.InjectJavascript("./openapi.js");
             swaggerUI.EnableDeepLinking();
         }
     }
