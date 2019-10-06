@@ -12,10 +12,13 @@
         ); window[aiName] = aisdk, aisdk.queue && 0 === aisdk.queue.length && aisdk.trackPageView({});
     </script>
     <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
-    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Martian Robots</title>
+    <meta name="description" content="Martian Robots interview assignment implementation for Red Badger by Samu Láng."/>
+    <link rel="icon" type="image/svg+xml" href="~/favicon.svg">
 </head>
 <body>
-    <main>
+    <main role="main">
         @RenderBody()
     </main>
 </body>

@@ -20,10 +20,13 @@
 namespace MartianRobots.Web
 {
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Cors.Infrastructure;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Rewrite;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Net.Http.Headers;
     using Swashbuckle.AspNetCore.SwaggerUI;
 
     /// <summary>
@@ -37,6 +40,7 @@ namespace MartianRobots.Web
         /// <param name="services">Dependency injected service collection.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(ConfigureCors);
             services.AddMvc(ConfigureMvc);
         }
 
@@ -54,6 +58,7 @@ namespace MartianRobots.Web
 
             app.UseStaticFiles();
             app.UseRewriter(new RewriteOptions().AddRewrite("^openapi$", "swagger/index.html", false).AddRewrite("^(swagger|favicon)(.+)$", "swagger/$1$2", true));
+            app.UseCors();
             app.UseMvc();
             app.UseSwaggerUI(ConfigureSwaggerUI);
         }
@@ -72,6 +77,14 @@ namespace MartianRobots.Web
             swaggerUI.InjectStylesheet("./openapi.css");
             swaggerUI.InjectJavascript("./openapi.js");
             swaggerUI.EnableDeepLinking();
+        }
+
+        private static void ConfigureCors(CorsOptions cors)
+        {
+            cors.AddDefaultPolicy(policy => policy
+                .AllowAnyOrigin()
+                .WithHeaders(HeaderNames.ContentType)
+                .WithMethods(HttpMethods.Post));
         }
     }
 }

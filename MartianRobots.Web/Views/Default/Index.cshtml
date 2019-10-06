@@ -1,23 +1,39 @@
 ﻿@model Parameters
 
-<h1>Martian Robots</h1>
+<section class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Martian Robots</h1>
+        <p class="lead">DESC</p>
+    </div>
+</section>
 
-<form method="post">
-    <label asp-for="World"></label>
-    <textarea asp-for="World" required rows="10"></textarea>
-    <button>submit</button>
-</form>
+<section class="container">
+    <h1>Input</h1>
+    <form method="post" asp-antiforgery="false">
+        <div class="form-group">
+            <label asp-for="World"></label>
+            <textarea asp-for="World" required rows="9" class="form-control" aria-describedby="worldHelp" placeholder="5 3&#xD;&#xA;1 1 E&#xD;&#xA;RFRFRFRF&#xD;&#xA;&#xD;&#xA;3 2 N&#xD;&#xA;FRRFLLFFRRFLL&#xD;&#xA;&#xD;&#xA;0 3 W&#xD;&#xA;LLFFFLFLFL"></textarea>
+            <small id="worldHelp" class="form-text text-muted">DESC</small>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" asp-fragment="output">submit</button>
+        </div>
+    </form>
+</section>
 
 @if (Model is object)
 {
-    <div>
-        @if (Model.Output is object)
-        {
-            <pre>@Model.Output</pre>
-        }
-        @if (Model.Error is object)
-        {
-            <span class="error">@Model.Error</span>
-        }
-    </div>
+    <section id="output" class="container">
+        <h1>Output</h1>
+        <div class="jumbotron">
+            @if (Model.Output is object)
+            {
+                <pre>@Model.Output</pre>
+            }
+            @if (Model.Error is object)
+            {
+                <span class="text-danger"><span class="error">@Model.Error</span></span>
+            }
+        </div>
+    </section>
 }

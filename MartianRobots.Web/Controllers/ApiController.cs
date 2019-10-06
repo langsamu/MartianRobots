@@ -66,5 +66,15 @@ namespace MartianRobots.Web
 
             return this.Ok(output);
         }
+
+        /// <summary>
+        /// Represents a head request (for CORS preflight).
+        /// </summary>
+        /// <returns>An empty response.</returns>
+        [HttpHead]
+        public IActionResult Head()
+        {
+            return this.Ok();
+        }
     }
 }

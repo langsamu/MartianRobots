@@ -1,7 +1,9 @@
 namespace MartianRobots.Test
 {
     using MartianRobots.Web;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc.Testing;
+    using Microsoft.Net.Http.Headers;
     using Microsoft.OpenApi.Readers;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
@@ -166,6 +168,44 @@ X";
                     var value = await response.Content.ReadAsStringAsync();
 
                     StringAssert.Contains(value, "<span class=\"error\">");
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task Sends_CORS_headers()
+        {
+            using (var request = new HttpRequestMessage(HttpMethod.Options, "/"))
+            {
+                request.Headers.Add(HeaderNames.Origin, "example.com");
+                request.Headers.Add(HeaderNames.AccessControlRequestHeaders, HeaderNames.ContentType);
+                request.Headers.Add(HeaderNames.AccessControlRequestMethod, HttpMethods.Post);
+
+                using (var response = await client.SendAsync(request))
+                {
+                    var exists = response.Headers.TryGetValues(HeaderNames.AccessControlAllowOrigin, out var values);
+                    Assert.IsTrue(exists);
+                    Assert.IsTrue(values.Contains("*"));
+
+                    exists = response.Headers.TryGetValues(HeaderNames.AccessControlAllowHeaders, out values);
+                    Assert.IsTrue(exists);
+                    Assert.IsTrue(values.Contains(HeaderNames.ContentType));
+
+                    exists = response.Headers.TryGetValues(HeaderNames.AccessControlAllowMethods, out values);
+                    Assert.IsTrue(exists);
+                    Assert.IsTrue(values.Contains(HttpMethods.Post));
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task Handles_head_requests()
+        {
+            using (var message = new HttpRequestMessage(HttpMethod.Head, "/api"))
+            {
+                using (var response = await client.SendAsync(message))
+                {
+                    Assert.IsTrue(response.IsSuccessStatusCode);
                 }
             }
         }
