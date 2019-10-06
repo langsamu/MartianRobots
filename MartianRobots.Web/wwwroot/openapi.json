@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Martian Robots API",
-    "description": "This API parses, processes and serialises worlds where robots execute movement commands.",
+    "description": "This API parses, processes and serialises worlds where robots execute movement commands.\r\n\r\nFunctionality is also available over a [form UI](/).",
     "contact": {
       "name": "Written by Samu Láng",
       "url": "https://www.linkedin.com/in/langsamu"

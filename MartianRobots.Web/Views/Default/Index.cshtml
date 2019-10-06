@@ -3,7 +3,10 @@
 <section class="jumbotron">
     <div class="container">
         <h1 class="display-3">Martian Robots</h1>
-        <p class="lead">DESC</p>
+        <p class="lead">This application parses a textual representation of a world with robots, executes movement commands and serialises the results.</p>
+        <p>Functionality is also available over an <a href="~/openapi">API</a>.</p>
+        <p>Written by <a href="https://www.linkedin.com/in/langsamu">Samu Láng</a>.</p>
+        <p>Source-code and more information on <a href="https://github.com/langsamu/MartianRobots#readme">GitHub</a>.</p>
     </div>
 </section>
 
@@ -13,7 +16,7 @@
         <div class="form-group">
             <label asp-for="World"></label>
             <textarea asp-for="World" required rows="9" class="form-control" aria-describedby="worldHelp" placeholder="5 3&#xD;&#xA;1 1 E&#xD;&#xA;RFRFRFRF&#xD;&#xA;&#xD;&#xA;3 2 N&#xD;&#xA;FRRFLLFFRRFLL&#xD;&#xA;&#xD;&#xA;0 3 W&#xD;&#xA;LLFFFLFLFL"></textarea>
-            <small id="worldHelp" class="form-text text-muted">DESC</small>
+            <small id="worldHelp" class="form-text text-muted">Enter a text representing the size of the world, initial location and orientation of robots and movement commands.</small>
         </div>
         <div class="form-group">
             <button class="btn btn-primary" asp-fragment="output">submit</button>
