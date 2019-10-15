@@ -1,5 +1,10 @@
 trigger:
-- rust/martian-robots
+  branches:
+    include:
+      - rust
+  paths:
+    include:
+      - martian-robots
 
 pool:
   vmImage: 'windows-latest'
