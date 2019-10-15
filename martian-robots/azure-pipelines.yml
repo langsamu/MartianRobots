@@ -1,5 +1,5 @@
 trigger:
-- master
+- master/martian-robots
 
 pool:
   vmImage: 'windows-latest'
