@@ -1,5 +1,5 @@
 trigger:
-- master
+- master/martian-robots
 
 pool:
   vmImage: 'windows-latest'
@@ -12,18 +12,19 @@ steps:
   displayName: Build
   inputs:
     cargoCommand: build
+    cargoWorkingDir: 'martian-robots'
 
 - task: CopyFiles@2
   displayName: 'Copy exe'
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/target/debug'
+    SourceFolder: '$(Build.SourcesDirectory)/martian-robots/target/debug'
     Contents: 'martian-robots.exe'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: CopyFiles@2
   displayName: 'Copy wwwroot'
   inputs:
-    SourceFolder: wwwroot
+    SourceFolder: 'martian-robots/wwwroot'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
