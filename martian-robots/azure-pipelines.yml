@@ -1,0 +1,48 @@
+pool:
+  name: Azure Pipelines
+steps:
+- task: spontoreau.rust-vsts.rust-install.Rust@1
+  displayName: Install
+
+- task: spontoreau.rust-vsts.rust-rustc.Rustc@1
+  displayName: Compile
+  inputs:
+    rustcInput: main.rs
+    rustcOptions: '--out-dir $(Build.ArtifactStagingDirectory)'
+    verbose: true
+  enabled: false
+
+- task: spontoreau.rust-vsts.rust-cargo.Cargo@1
+  displayName: Build
+  inputs:
+    cargoCommand: build
+
+- task: CopyFiles@2
+  displayName: 'Copy exe'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)/target/debug'
+    Contents: 'martian-robots.exe'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: CopyFiles@2
+  displayName: 'Copy wwwroot'
+  inputs:
+    SourceFolder: wwwroot
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish
+  enabled: false
+
+- task: ArchiveFiles@2
+  displayName: 'Archive $(Build.ArtifactStagingDirectory)'
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Azure App Service Deploy: langsamunet'
+  inputs:
+    azureSubscription: 'Pay-As-You-Go (d40c53cc-9981-4d98-a471-35df02d0bdc7)'
+    WebAppName: langsamunet
+    VirtualApplication: /rusttest
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
