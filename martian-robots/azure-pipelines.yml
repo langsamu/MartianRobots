@@ -12,6 +12,7 @@ steps:
   displayName: Build
   inputs:
     cargoCommand: build
+    cargoWorkingDir: martian-robots
 
 - task: CopyFiles@2
   displayName: 'Copy exe'
