@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - rust
+      - master
   paths:
     include:
       - martian-robots
@@ -34,20 +34,3 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: Publish
-
-- task: ArchiveFiles@2
-  displayName: Zip
-  inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-    includeRootFolder: false
-    archiveFile: '$(Build.ArtifactStagingDirectory)/drop.zip'
-  enabled: false
-
-- task: AzureRmWebAppDeployment@4
-  displayName: Deploy
-  inputs:
-    azureSubscription: 'Pay-As-You-Go (d40c53cc-9981-4d98-a471-35df02d0bdc7)'
-    WebAppName: 'martian-robots'
-    VirtualApplication: /rust
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/drop.zip'
-  enabled: false
