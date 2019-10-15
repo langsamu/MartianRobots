@@ -1,6 +1,6 @@
 # Martian Robots
 
-[![Build Status](https://langsamu.visualstudio.com/MartianRobots/_apis/build/status/langsamu.MartianRobots?branchName=master)](https://langsamu.visualstudio.com/MartianRobots/_build/latest?definitionId=14&branchName=master)
+[![Build Status](https://langsamu.visualstudio.com/MartianRobots/_apis/build/status/Build%20Martian%20Robots?branchName=master)](https://langsamu.visualstudio.com/MartianRobots/_build/latest?definitionId=14&branchName=master)
 
 ## Online components
 - [Web UI](https://martian-robots.azurewebsites.net/) (on Azure App Service)
