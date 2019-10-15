@@ -15,11 +15,8 @@ fn main() {
 
     let server = Server::bind(&addr)
         .serve(|| {
-            // This is the `Service` that will handle the connection.
-            // `service_fn_ok` is a helper to convert a function that
-            // returns a Response into a `Service`.
             service_fn_ok(move |_: Request<Body>| {
-                Response::new(Body::from("Hello martian robots!"))
+                Response::new(Body::from("Hello world martian robots rust!"))
             })
         })
         .map_err(|e| eprintln!("server error: {}", e));

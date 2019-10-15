@@ -1,16 +1,12 @@
+trigger:
+- master
+
 pool:
-  name: Azure Pipelines
+  vmImage: 'windows-latest'
+
 steps:
 - task: spontoreau.rust-vsts.rust-install.Rust@1
   displayName: Install
-
-- task: spontoreau.rust-vsts.rust-rustc.Rustc@1
-  displayName: Compile
-  inputs:
-    rustcInput: main.rs
-    rustcOptions: '--out-dir $(Build.ArtifactStagingDirectory)'
-    verbose: true
-  enabled: false
 
 - task: spontoreau.rust-vsts.rust-cargo.Cargo@1
   displayName: Build
@@ -32,17 +28,20 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: Publish
-  enabled: false
 
 - task: ArchiveFiles@2
-  displayName: 'Archive $(Build.ArtifactStagingDirectory)'
+  displayName: Zip
   inputs:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
+    archiveFile: '$(Build.ArtifactStagingDirectory)/drop.zip'
+  enabled: false
 
 - task: AzureRmWebAppDeployment@4
-  displayName: 'Azure App Service Deploy: langsamunet'
+  displayName: Deploy
   inputs:
     azureSubscription: 'Pay-As-You-Go (d40c53cc-9981-4d98-a471-35df02d0bdc7)'
-    WebAppName: langsamunet
-    VirtualApplication: /rusttest
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    WebAppName: 'martian-robots'
+    VirtualApplication: /rust
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/drop.zip'
+  enabled: false
