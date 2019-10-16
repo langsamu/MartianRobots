@@ -3,7 +3,13 @@ variables:
   TestProjects: '**/MartianRobots.Test.csproj'
 
 trigger:
-- master
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - MartianRobots
+      - MartianRobots.Web
 
 pool:
   vmImage: 'windows-latest'
