@@ -94,3 +94,59 @@ fn parse_commands(chars: &mut std::str::Chars) -> String {
         .take_while(|c| c.is_alphabetic())
         .collect::<String>()
 }
+
+struct World {
+    width: i32,
+    height: i32,
+    scents: Vec<(i32, i32)>,
+}
+
+struct Robot {
+   x: i32,
+   y: i32,
+   orientation: i32,
+   lost: bool,
+}
+
+struct ForwardCommand;
+
+struct LeftCommand;
+
+struct RightCommand;
+
+trait Command {
+    fn execute(&self, robot: &mut Robot, world: &mut World);
+}
+
+impl Command for ForwardCommand {
+    fn execute(&self, robot: &mut Robot, world: &mut World) {
+        let orientation_radians = f64::from(robot.orientation) * std::f64::consts::PI / 180f64;
+        let x = (f64::from(robot.x) + orientation_radians.cos()) as i32;
+        let y = (f64::from(robot.y) + orientation_radians.sin()) as i32;
+        
+        if x < 0 || x > world.width || y < 0 || y > world.height {
+            if world.scents.contains(&(x, y)) {
+                return;
+            }
+            
+            world.scents.push((x, y));
+            robot.lost = true;
+            return;
+        }
+        
+        robot.x = x;
+        robot.y = y;
+    }
+}
+
+impl Command for LeftCommand {
+    fn execute(&self, robot: &mut Robot, _: &mut World) {
+        robot.orientation -= 90;
+    }
+}
+
+impl Command for RightCommand {
+    fn execute(&self, robot: &mut Robot, _: &mut World) {
+        robot.orientation += 90;
+    }
+}
