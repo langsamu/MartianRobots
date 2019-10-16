@@ -45,13 +45,17 @@ fn parse_world(input: String) -> String {
 
     let width = parse_integer(&mut chars);
     let height = parse_integer(&mut chars);
-    println!("world width {} height {}", width, height);
 
-    let robot1 = parse_robot(&mut chars);
-    let robot2 = parse_robot(&mut chars);
-    let robot3 = parse_robot(&mut chars);
+    let mut world = format!("world width {} height {}", width, height);
     
-    format!("{}\n{}\n{}", robot1, robot2, robot3)
+    while {
+        let robot = parse_robot(&mut chars);
+        world.push_str(format!("\n{}", robot).as_str());
+
+        chars.next().is_some()
+    } { }
+
+    world
 }
 
 fn parse_integer(chars: &mut std::str::Chars) -> i32 {
@@ -69,8 +73,7 @@ fn parse_robot(chars: &mut std::str::Chars) -> String {
     let orientation = parse_orientation(chars);
     chars.next(); 
     let commands = parse_commands(chars);
-    chars.next();
-    
+
     format!("robot x {} y {} orientation {} commands {}", x, y, orientation, commands)
 }
 
